@@ -7,13 +7,14 @@ const SwapTokens: React.FC = () => {
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-xl font-bold text-[#FAFAFA]">SWAP TOKENS</h2>
         <button className="text-[#FAFAFA] p-2">
-          <img src="/path/to/cog-icon.png" alt="Cog Icon" className="w-6 h-6" />
+          <img src="/Vector.png" alt="Cog Icon" />
         </button>
       </div>
 
-      <div className="flex justify-between ">
+      <div className="flex justify-between">
+        {/* Left Panel */}
         <div className="flex-1 bg-[#1E1E1E] rounded-l-lg p-5">
-          <div className="flex justify-between items-start mb-4">
+          <div className="flex justify-between p-2 m-2">
             <div>
               <input
                 type="number"
@@ -22,25 +23,36 @@ const SwapTokens: React.FC = () => {
               />
               <p className="text-[#666666] text-sm mt-1">$0.00</p>
             </div>
-            <button className="flex items-center bg-black px-4 py-2 rounded text-[#868686]">
-              <span className="mr-2">BTC</span>
-              <span>▼</span>
-            </button>
-          </div>
-          <div className="text-[#FAFAFA] text-sm">
-            <span className="text-[#FAFAFA]">Balance: </span>
-            <span className="text-[#3980FF]">24,240</span>
+            <div>
+              <div>
+                <img src="/ETH.png" alt="ETH" />
+                <button className="flex items-center bg-black px-4 py-2 rounded text-[#868686]">
+                  <span className="mr-2">BTC</span>
+                  <span>▼</span>
+                </button>
+              </div>
+              <div className="text-[#FAFAFA] text-sm">
+                <span className="text-[#FAFAFA]">Balance: </span>
+                <span className="text-[#3980FF]">24,240</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-center">
+        {/* Middle Panel (Swap Icon) */}
+        <div className="flex items-center justify-center mx-4">
           <div className="bg-black rounded-full p-2">
-            <FaExchangeAlt size={24} className="text-[#FAFAFA]" />
+            <img
+              src="/iconoir_coins-swap.png"
+              alt="Swap Icon"
+              className="w-6 h-6"
+            />
           </div>
         </div>
 
+        {/* Right Panel */}
         <div className="flex-1 bg-[#1E1E1E] rounded-r-lg p-5">
-          <div className="flex justify-between items-start mb-4">
+          <div className="flex justify-between p-2 m-2">
             <div>
               <input
                 type="number"
@@ -49,17 +61,22 @@ const SwapTokens: React.FC = () => {
               />
               <p className="text-[#666666] text-sm mt-1">$0.00</p>
             </div>
-            <button className="flex items-center bg-black px-4 py-2 rounded text-[#868686]">
-              <span className="mr-2">BNB</span>
-              <span>▼</span>
-            </button>
-          </div>
-          <div className="text-[#FAFAFA] text-sm">
-            <span className="text-[#FAFAFA]">Balance: </span>
-            <span className="text-[#3980FF]">63,790</span>
+            <div>
+              <div>
+                <button className="flex items-center bg-black px-4 py-2 rounded text-[#868686]">
+                  <span className="mr-2">BNB</span>
+                  <span>▼</span>
+                </button>
+              </div>
+              <div className="text-[#FAFAFA] text-sm">
+                <span className="text-[#FAFAFA]">Balance: </span>
+                <span className="text-[#3980FF]">63,790</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
       <div className="grid grid-cols-3 gap-4">
         <div className="invisible ...">01</div>
         <div className=" relative flex justify-center items-center p-4 m-4">
