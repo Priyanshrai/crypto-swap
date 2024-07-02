@@ -14,10 +14,25 @@ const SwapTokens: React.FC = () => {
     image: "/bnb.png",
   });
 
+  const [leftValue, setLeftValue] = useState("0.00");
+  const [rightValue, setRightValue] = useState("0.00");
+
   const handleSwap = () => {
-    const temp = leftCrypto;
+    const tempCrypto = leftCrypto;
     setLeftCrypto(rightCrypto);
-    setRightCrypto(temp);
+    setRightCrypto(tempCrypto);
+
+    const tempValue = leftValue;
+    setLeftValue(rightValue);
+    setRightValue(tempValue);
+  };
+
+  const handleLeftValueChange = (event) => {
+    setLeftValue(event.target.value);
+  };
+
+  const handleRightValueChange = (event) => {
+    setRightValue(event.target.value);
   };
 
   return (
@@ -33,11 +48,15 @@ const SwapTokens: React.FC = () => {
           {/* Left Panel */}
           <div className="flex-1 bg-[#1E1E1E] rounded-l-lg p-5">
             <div className="flex justify-between p-2 m-2">
-              <div>
+              <div className="text-white">
                 <input
                   type="number"
+                  value={leftValue}
+                  onChange={handleLeftValueChange}
                   placeholder="0.00"
-                  className="bg-transparent text-5xl text-[#FAFAFA] w-full outline-none"
+                  className={`bg-transparent font-semibold text-5xl w-full outline-none ${
+                    leftValue === "0" ? "text-white" : "text-white"
+                  }`}
                 />
                 <p className="text-[#666666] text-sm mt-1">$0.00</p>
               </div>
@@ -53,7 +72,7 @@ const SwapTokens: React.FC = () => {
                     </div>
                   </button>
                 </div>
-                <div className="text-[#FAFAFA] mt-2 text-sm">
+                <div className="text-[#FAFAFA] mt-2 flex text-sm">
                   <span className="text-[#FAFAFA]">Balance: </span>
                   <span className="text-[#3980FF]">{leftCrypto.balance}</span>
                 </div>
@@ -67,8 +86,12 @@ const SwapTokens: React.FC = () => {
               <div>
                 <input
                   type="number"
+                  value={rightValue}
+                  onChange={handleRightValueChange}
                   placeholder="0.00"
-                  className="bg-transparent text-5xl text-[#FAFAFA] w-full outline-none"
+                  className={`bg-transparent font-semibold text-5xl w-full outline-none ${
+                    rightValue === "0" ? "text-white" : "text-white"
+                  }`}
                 />
                 <p className="text-[#666666] text-sm mt-1">$0.00</p>
               </div>
@@ -84,7 +107,7 @@ const SwapTokens: React.FC = () => {
                     </div>
                   </button>
                 </div>
-                <div className="text-[#FAFAFA] mt-2 text-sm">
+                <div className="text-[#FAFAFA] mt-2  flex text-sm">
                   <span className="text-[#FAFAFA]">Balance: </span>
                   <span className="text-[#3980FF]">{rightCrypto.balance}</span>
                 </div>
@@ -97,7 +120,7 @@ const SwapTokens: React.FC = () => {
             onClick={handleSwap}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black rounded-full p-3 z-10"
           >
-            <img src="/iconoir_coins-swap.png" alt="" />
+            <FaExchangeAlt size={24} className="text-[#FAFAFA]" />
           </button>
         </div>
       </div>
