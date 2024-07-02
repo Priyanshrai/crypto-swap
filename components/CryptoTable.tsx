@@ -43,8 +43,20 @@ const CryptoTable = () => {
       </div>
     );
 
+  const formatNumber = (number: string | number | bigint) => {
+    if (typeof number === "string") {
+      const parsedNumber = parseFloat(number);
+      if (isNaN(parsedNumber)) {
+        return number; // Return the original string if it's not a valid number
+      }
+      return new Intl.NumberFormat("en-US").format(parsedNumber);
+    } else {
+      return new Intl.NumberFormat("en-US").format(number);
+    }
+  };
+
   return (
-    <div className=" bg-black bg-opacity-80 rounded-lg p-4  p-6  border border-gray-600 shadow">
+    <div className="  backdrop-blur-2xl rounded-lg p-8 border border-gray-600 shadow ">
       <table className="w-full ">
         <thead className="border-b-2 border-gray-600">
           <tr className="text-white">
@@ -52,16 +64,15 @@ const CryptoTable = () => {
             <th className="text-left">Last Trade</th>
             <th className="text-left">24H %</th>
             <th className="text-left">24H Change</th>
-            <th className="text-right text-blue-500">More &gt;</th>
+            <th className=" text-blue-500">More &gt;</th>
           </tr>
         </thead>
 
         <tbody>
           {cryptoData.map((crypto) => (
-            <tr key={crypto.id} className="text-white ">
-              <td className="py-4 items-center">
-                <div className="flex">
-                  {" "}
+            <tr key={crypto.id} className="text-white">
+              <td className="py-4 px-4 items-center">
+                <div className="flex items-center">
                   <div className="h-auto w-auto">
                     <Image
                       src={crypto.image}
@@ -77,27 +88,29 @@ const CryptoTable = () => {
                   </div>
                 </div>
               </td>
-
-              <td>${crypto.current_price.toFixed(2)}</td>
+              <td className="py-4 px-4 items-center">
+                ${formatNumber(crypto.current_price.toFixed(2))}
+              </td>
               <td
-                className={
+                className={`py-4 px-4 items-center ${
                   crypto.price_change_percentage_24h >= 0
                     ? "text-green-400"
                     : "text-red-400"
-                }
+                }`}
               >
                 {crypto.price_change_percentage_24h.toFixed(2)}%
               </td>
               <td
-                className={
+                className={`py-4 px-4 items-center ${
                   crypto.price_change_24h >= 0
                     ? "text-green-400"
                     : "text-red-400"
-                }
+                }`}
               >
-                ${Math.abs(crypto.price_change_24h).toFixed(2)}
+                {crypto.price_change_24h < 0 && "-"}$
+                {formatNumber(Math.abs(crypto.price_change_24h).toFixed(2))}
               </td>
-              <td className="text-right">
+              <td className="py-4 px-4 text-center">
                 <button className="bg-green-400 text-black px-4 py-2 rounded">
                   Trade
                 </button>

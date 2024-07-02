@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FaCog, FaExchangeAlt } from "react-icons/fa";
+import { SetStateAction, useState } from "react";
+import { FaCog } from "react-icons/fa";
 
 const SwapTokens: React.FC = () => {
   const [leftCrypto, setLeftCrypto] = useState({
@@ -27,16 +27,20 @@ const SwapTokens: React.FC = () => {
     setRightValue(tempValue);
   };
 
-  const handleLeftValueChange = (event) => {
+  const handleLeftValueChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setLeftValue(event.target.value);
   };
 
-  const handleRightValueChange = (event) => {
+  const handleRightValueChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setRightValue(event.target.value);
   };
 
   return (
-    <div className="bg-black bg-opacity-80 rounded-lg p-4 mb-32 border border-gray-600 shadow">
+    <div className="backdrop-blur-2xl rounded-lg p-8 mb-32 border border-gray-600 shadow">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-xl font-bold text-[#FAFAFA]">SWAP TOKENS</h2>
         <button className="text-[#FAFAFA] p-2">
@@ -74,7 +78,9 @@ const SwapTokens: React.FC = () => {
                 </div>
                 <div className="text-[#FAFAFA] mt-2 flex text-sm">
                   <span className="text-[#FAFAFA]">Balance: </span>
-                  <span className="text-[#3980FF]">{leftCrypto.balance}</span>
+                  <span className="text-[#3980FF] ml-1">
+                    {leftCrypto.balance}
+                  </span>
                 </div>
               </div>
             </div>
@@ -109,7 +115,9 @@ const SwapTokens: React.FC = () => {
                 </div>
                 <div className="text-[#FAFAFA] mt-2  flex text-sm">
                   <span className="text-[#FAFAFA]">Balance: </span>
-                  <span className="text-[#3980FF]">{rightCrypto.balance}</span>
+                  <span className="text-[#3980FF] ml-1">
+                    {rightCrypto.balance}
+                  </span>
                 </div>
               </div>
             </div>
@@ -120,7 +128,7 @@ const SwapTokens: React.FC = () => {
             onClick={handleSwap}
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black rounded-full p-3 z-10"
           >
-            <FaExchangeAlt size={24} className="text-[#FAFAFA]" />
+            <img src="/iconoir_coins-swap.png" />
           </button>
         </div>
       </div>
@@ -137,8 +145,14 @@ const SwapTokens: React.FC = () => {
 
       <div className="flex justify-between items-center mt-6 text-sm">
         <div>
-          <span className="text-[#FAFAFA]">1 BTC = 32.4039 ETH</span>
-          <span className="text-[#3980FF] ml-2">Free exchange</span>
+          <div>
+            {" "}
+            <span className="text-[#FAFAFA]">1 BTC = 32.4039 ETH</span>
+          </div>
+          <div>
+            {" "}
+            <span className="text-[#3980FF]">Free exchange</span>
+          </div>
         </div>
         <span className="text-[#666666]">Updates in 4s</span>
       </div>
