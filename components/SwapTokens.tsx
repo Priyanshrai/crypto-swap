@@ -1,5 +1,5 @@
 // SwapTokens.tsx
-import { FaCog, FaExchangeAlt } from 'react-icons/fa';
+import { FaCog, FaExchangeAlt } from "react-icons/fa";
 
 const SwapTokens: React.FC = () => {
   return (
@@ -7,15 +7,19 @@ const SwapTokens: React.FC = () => {
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-xl font-bold text-[#FAFAFA]">SWAP TOKENS</h2>
         <button className="text-[#FAFAFA] p-2">
-          <FaCog size={24} />
+          <img src="/path/to/cog-icon.png" alt="Cog Icon" className="w-6 h-6" />
         </button>
       </div>
-      
-      <div className="flex justify-between space-x-4">
+
+      <div className="flex justify-between ">
         <div className="flex-1 bg-[#1E1E1E] rounded-l-lg p-5">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <input type="number" placeholder="0.00" className="bg-transparent text-5xl text-[#FAFAFA] w-full outline-none" />
+              <input
+                type="number"
+                placeholder="0.00"
+                className="bg-transparent text-5xl text-[#FAFAFA] w-full outline-none"
+              />
               <p className="text-[#666666] text-sm mt-1">$0.00</p>
             </div>
             <button className="flex items-center bg-black px-4 py-2 rounded text-[#868686]">
@@ -38,7 +42,11 @@ const SwapTokens: React.FC = () => {
         <div className="flex-1 bg-[#1E1E1E] rounded-r-lg p-5">
           <div className="flex justify-between items-start mb-4">
             <div>
-              <input type="number" placeholder="0.00" className="bg-transparent text-5xl text-[#FAFAFA] w-full outline-none" />
+              <input
+                type="number"
+                placeholder="0.00"
+                className="bg-transparent text-5xl text-[#FAFAFA] w-full outline-none"
+              />
               <p className="text-[#666666] text-sm mt-1">$0.00</p>
             </div>
             <button className="flex items-center bg-black px-4 py-2 rounded text-[#868686]">
@@ -52,10 +60,15 @@ const SwapTokens: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <button className="relative flex justify-center items-center w-[250px] h-[51px] bg-[#9945FF] backdrop-blur-[2px] rounded-tl-lg rounded-br-lg text-white font-roboto font-medium text-base leading-[19px]">
-        SWOP TOKENS
-      </button>
+      <div className="grid grid-cols-3 gap-4">
+        <div className="invisible ...">01</div>
+        <div className=" relative flex justify-center items-center p-4 m-4">
+          <button className="relative flex justify-center items-center w-[250px] h-[51px] bg-[#9945FF] backdrop-blur-[2px] rounded-tl-lg rounded-br-lg text-white font-roboto font-medium text-base leading-[19px]">
+            SWOP TOKENS
+          </button>
+        </div>
+        <div className="invisible ...">03</div>
+      </div>
 
       <div className="flex justify-between items-center mt-6 text-sm">
         <div>
